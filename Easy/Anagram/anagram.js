@@ -54,13 +54,18 @@ function main() {
 class Solution 
 {
     isAnagram(a, b) {
-        if (a.length != b.length) return false;
+        // Check if the lengths of the strings are equal
+        if (a.length !== b.length) return false;
+
+        // Remove spaces and convert to lowercase
+        a = a.replace(/\s/g, '').toLowerCase();
+        b = b.replace(/\s/g, '').toLowerCase();
         
-        const aSorted = a.split('').sort();
-        const bSort = b.split('').sort();
-        for (let i=0; i<=a.length; i++) {
-            if (aSort[i] != bSort[i]) return false;
-        }
-        return true;
+        // Sort the characters in the strings and compare
+        a = a.split('').sort().join('');
+        b = b.split('').sort().join('');
+        
+        
+        return a ==b
     }
 }
