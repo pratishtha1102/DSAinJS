@@ -66,16 +66,21 @@ function main() {
 */
 
 class Solution {
-    peakElement(arr, n) {
-        for (let i = 0; i < n; i++) {
-            // Check if arr[i] is greater than or equal to its left and right neighbors (if they exist)
-            if ((i === 0 || arr[i] >= arr[i - 1]) && (i === n - 1 || arr[i] >= arr[i + 1])) {
-                // If yes, return the index of the peak element
-                return i;
-            }
+    
+    peakElement(arr, n)
+      {
+       
+        // first or last element is peak element
+        if (n == 1) return 0;
+        if (arr[0] >= arr[1]) return 0;
+        if (arr[n - 1] >= arr[n - 2]) return n - 1;
+ 
+        // check for every other element
+        for (var i = 1; i < n - 1; i++) 
+        {
+         
+          // check if the neighbors are smaller
+          if (arr[i] >= arr[i - 1] && arr[i] >= arr[i + 1]) return i;
         }
-        // If no peak element is found, return -1
-        return -1;
+      }
     }
-
-}
